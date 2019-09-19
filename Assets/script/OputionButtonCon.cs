@@ -9,7 +9,6 @@ public class OputionButtonCon : MonoBehaviour
     public void OnClick()
     {
         SceneManager.LoadScene("optionScene");
-        Debug.Log("giahdi");
     }
     // Start is called before the first frame update
     void Start()
