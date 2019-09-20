@@ -8,8 +8,9 @@ public class kingakuCon : MonoBehaviour
     GameObject kingakuText;
     float kingaku;//現在の金額
     int saidai;//金額の最大値
-    bool f;
-    int neko;//ねこの値段
+    bool neko;
+    bool kaihou;
+    int nekonedan;//ねこの値段
 
 
     // Start is called before the first frame update
@@ -18,19 +19,27 @@ public class kingakuCon : MonoBehaviour
         this.kingakuText = GameObject.Find("KingakuText");
         kingaku = 0;//金額を0から始める
         saidai = 2000;//金額の最大値はここで変更
-        neko = 75;　　　//ねこ値段はここで変更
+        nekonedan = 75;   //ねこ値段はここで変更
+      
     }
 
     // Update is called once per frame
     void Update()
     {
+        neko = NekoCon.x;
+        kaihou = KaihouCon.kaihou;
 
-        f = NekoCon.x;　　//ねこボタンを押したときのコード
-        if (f == true&&neko<=kingaku)
+        if (neko == true&&nekonedan<=kingaku)//ねこのコード
         {
             Debug.Log("ねこ出陣");
-            kingaku -= neko;
+            kingaku -= nekonedan;
             NekoCon.x = false;
+        }
+
+        if (kaihou == true)
+        {
+            saidai += 1000;
+            KaihouCon.kaihou = false;
         }
       
         if (kingaku<saidai-0.1f)//金額の最大値がsaidaiの値
