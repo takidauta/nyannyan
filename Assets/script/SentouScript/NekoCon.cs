@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class NekoCon : MonoBehaviour
 {
+
+    public static bool x = false;
     public void OnClick()
     {
         Debug.Log("ねこ出陣");
+        x = true;
+      
     }
+
     // Start is called before the first frame update
 
     void Start()
@@ -19,5 +24,9 @@ public class NekoCon : MonoBehaviour
     void Update()
     {
         
+    }
+    public static bool getX()
+    {
+        return x;
     }
 }
