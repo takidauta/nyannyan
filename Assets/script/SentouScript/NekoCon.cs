@@ -8,9 +8,7 @@ public class NekoCon : MonoBehaviour
     public static bool x = false;
     public void OnClick()
     {
-        Debug.Log("ねこ出陣");
-        x = true;
-      
+        x = true; 
     }
 
     // Start is called before the first frame update

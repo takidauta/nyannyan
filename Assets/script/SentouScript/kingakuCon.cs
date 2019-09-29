@@ -8,9 +8,15 @@ public class kingakuCon : MonoBehaviour
     GameObject kingakuText;
     float kingaku;//現在の金額
     int saidai;//金額の最大値
-    bool neko;
-    bool kaihou;
-    int nekonedan;//ねこの値段
+
+    int neko;//ねこの値段
+    bool f;//ねこスクリプトの値をこいつに代入
+   
+    int jyougen; //上限解放
+    int kaisuu;//上限解放の数をここで決める
+    bool j;//解放スクリプトの値をこいつに代入
+
+
 
 
     // Start is called before the first frame update
@@ -19,29 +25,38 @@ public class kingakuCon : MonoBehaviour
         this.kingakuText = GameObject.Find("KingakuText");
         kingaku = 0;//金額を0から始める
         saidai = 2000;//金額の最大値はここで変更
-        nekonedan = 75;   //ねこ値段はここで変更
-      
+        neko = 75;　　　//ねこ値段はここで変更
+        jyougen = 500;//上限解放はここで変更
+        kaisuu = 0;//上限解放の回数をここで変更
+        
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        neko = NekoCon.x;
-        kaihou = KaihouCon.kaihou;
+        //ねこの金額骨組み
+        f = NekoCon.x;　　//ねこボタンを押したときのコード
+        j = KaihouCon.kaihou;
 
-        if (neko == true&&nekonedan<=kingaku)//ねこのコード
+        if (f == true && neko <= kingaku)
         {
             Debug.Log("ねこ出陣");
-            kingaku -= nekonedan;
+            kingaku -= neko;
             NekoCon.x = false;
         }
 
-        if (kaihou == true)
+        //上限解放骨組み
+        if (j == true&&kaisuu<7)
         {
-            saidai += 1000;
+            Debug.Log("上限解放");
+            saidai += jyougen;
             KaihouCon.kaihou = false;
+            kaisuu += 1;
         }
-      
+
+
+        //金額の骨組み
         if (kingaku<saidai-0.1f)//金額の最大値がsaidaiの値
         kingaku += Time.deltaTime*100;//1秒間に100円ずつ増える
         this.kingakuText.GetComponent<Text>().text = ((int)kingaku)+"/"+saidai+"円";//現在の金額と最大値の金額をTextに表示
