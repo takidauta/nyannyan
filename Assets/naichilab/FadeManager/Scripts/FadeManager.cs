@@ -139,4 +139,9 @@ public class FadeManager : MonoBehaviour
 
 		this.isFading = false;
 	}
+
+    internal void LoadScene(string v)
+    {
+        throw new NotImplementedException();
+    }
 }
