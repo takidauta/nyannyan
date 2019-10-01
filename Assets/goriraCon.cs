@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class goriraCon : MonoBehaviour
 {
-    Rigidbody2D rigidbody2D;
+    public bool b=false; 
+    
     // Start is called before the first frame update
     void Start()
     {
-        rigidbody2D = GetComponent<Rigidbody2D>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        rigidbody2D.position = Vector3.forward * 0.1f;
+        if(b==false)
+        GetComponent<Rigidbody2D>().velocity = new Vector2(1, 0);
+        if(b==true)
+        GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
     }
 
 
@@ -22,8 +26,9 @@ public class goriraCon : MonoBehaviour
     {
         if (collision.gameObject.name == "kabenekoPre")
         {
-           
+            Debug.Log("fdgfdddddddfv");
+            b = true;
         }
-       
+
     }
 }
