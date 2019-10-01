@@ -2,12 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KyosinnekoCon : MonoBehaviour
+public class kabenekobottonCon : MonoBehaviour
 {
-    public void OnClick()
-    {
-        Debug.Log("巨神ねこ出陣");
-    }
     // Start is called before the first frame update
     void Start()
     {
